@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from openai import OpenAI
-# pN7LxK7bSd6dlAR0vJhYT3BlbkFJaFcwObEpyhf8kAdQGrN7
-client = OpenAI(api_key="pN7LxK7bSd6dlAR0vJhYT3BlbkFJaFcwObEpyhf8kAdQGrN7")
+# sk-pN7LxK7bSd6dlAR0vJhYT3Bl
+client = OpenAI(api_key="bkFJaFcwObEpyhf8kAdQGrN7")
 app = Flask(__name__)
 
 @app.route("/")
