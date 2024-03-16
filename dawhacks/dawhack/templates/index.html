@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IoT Dashboard</title>
+    <title>AI ToDoList</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <style>
@@ -67,14 +67,7 @@
         });
     
         function sendClick() {
-            //window.location.href = "/list?input=" + $("#taskTextarea").val();
-            $.ajax({
-                url: '/list.html', // specify the URL to send the request to
-                type: 'GET', // use POST method since you're sending form data
-                data: {"input": $("#taskTextarea").val()},
-            });
-
-            
+            window.location.href = "/list.html?input=" + $("#taskTextarea").val();
         }
     });
 </script>
