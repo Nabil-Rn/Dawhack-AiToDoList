@@ -67,11 +67,14 @@
         });
     
         function sendClick() {
+            //window.location.href = "/list?input=" + $("#taskTextarea").val();
             $.ajax({
-                url: '/list', // specify the URL to send the request to
+                url: '/list.html', // specify the URL to send the request to
                 type: 'GET', // use POST method since you're sending form data
                 data: {"input": $("#taskTextarea").val()},
             });
+
+            
         }
     });
 </script>

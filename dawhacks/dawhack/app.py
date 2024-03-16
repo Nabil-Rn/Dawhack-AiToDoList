@@ -1,19 +1,21 @@
 from flask import Flask, render_template, request
 from openai import OpenAI
-
-client = OpenAI(api_key="erm")
+# sk-pN7LxK7bSd6dlAR0vJhYT3Bl
+client = OpenAI(api_key="bkFJaFcwObEpyhf8kAdQGrN7")
 app = Flask(__name__)
 
 @app.route("/")
-@app.route("/home", methods=['GET', 'POST'])
+@app.route("/home", methods=('GET', 'POST'))
 def home():
     return render_template("index.html")
-@app.route("/list", methods=['GET', 'POST'])
+    
+@app.route("/list.html", methods=('GET', 'POST'))
 def list():
     input_value = request.args.get("input")
     print(input_value)
     list_content = loadNewList(input_value)
-    content = render_template("list.html") + list_content + "</body></html>"
+    
+    content = render_template("list.html") + list_content + "</div></body></html>"
     return content
 
 def loadNewList(list_text):
