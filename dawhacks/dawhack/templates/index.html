@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            text-align: center;
+        }
+
+        textarea, button {
+            width: 600px; 
+            height: 200px; 
+            padding: 10px; 
+            box-sizing: border-box; 
+            display: block; 
+            margin: 0 auto; 
+        }
+
+        button {
+            margin-top: 10px; 
+            height: 50px; 
+            background-color: lightblue;
+            color: gray;
+            border: none; 
+            cursor: pointer; 
+        }
+
+.vertical-center{
+    /* CSS Technique borrowed from w3schools.com/howto/howto_css_center-vertical.asp */
+    margin:0;
+    position: absolute;
+    top:50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+</style>
+
+<body>
+        <div class="container">
+            <textarea id="taskTextarea" name="task" placeholder="Enter your task here..."></textarea>
+            <button id="submitButton">Enter</button>
+        </div>
+    
+    <!-- Have to run project off server (XAMPP) for this to work apparently -->
+    <!-- <script type="py" src="./main.py" config="./pyscript.json"></script> -->
+</body>
+
+<!-- JS to make the bulbs switch from on to off -->
+<script>
+    $(document).ready(function(){
+        $("#submitButton").click(function(){
+            sendClick();
+        });
+    
+        function sendClick() {
+            $.ajax({
+                url: '/list', // specify the URL to send the request to
+                type: 'POST', // use POST method since you're sending form data
+                data: {"input": $("#taskTextarea").val()},
+                success: function(response) {
+                    // Redirect to the list page upon successful response
+                    window.location.href = '/home';
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors if any
+                    console.error("Error:", error);
+                }
+            });
+        }
+    });
+    </script>
+</html>

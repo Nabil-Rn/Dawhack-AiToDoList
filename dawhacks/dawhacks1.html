@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>FrontPage</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            text-align: center;
+        }
+
+        textarea, button {
+            width: 600px; 
+            height: 200px; 
+            padding: 10px; 
+            box-sizing: border-box; 
+            display: block; 
+            margin: 0 auto; 
+        }
+
+        button {
+            margin-top: 10px; 
+            height: 50px; 
+            background-color: lightblue;
+            color: gray;
+            border: none; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <textarea id="taskTextarea" name="task" placeholder="Enter your task here..."></textarea>
+        <button id="submitButton">Enter</button>
+    </div>
+
+    <script>
+        document.getElementById('submitButton').addEventListener('click', function() {
+            var taskValue = document.getElementById('taskTextarea').value;
+            window.location.href = 'dawhacks2.html?task=' + encodeURIComponent(taskValue);
+        });
+    </script>
+</body>
+</html>
