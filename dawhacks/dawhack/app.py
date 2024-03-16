@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from openai import OpenAI
-# sk-pN7LxK7bSd6dlAR0vJhYT3Bl
-client = OpenAI(api_key="bkFJaFcwObEpyhf8kAdQGrN7")
+# pN7LxK7bSd6dlAR0vJhYT3BlbkFJaFcwObEpyhf8kAdQGrN7
+client = OpenAI(api_key="pN7LxK7bSd6dlAR0vJhYT3BlbkFJaFcwObEpyhf8kAdQGrN7")
 app = Flask(__name__)
 
 @app.route("/")
@@ -20,6 +20,7 @@ def list():
 
 def loadNewList(list_text):
     response = client.chat.completions.create(
+        temperature=0,
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are supplying HTML code. Please only write in code, and without line breaks, or else our app will break."},
