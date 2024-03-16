@@ -69,18 +69,10 @@
         function sendClick() {
             $.ajax({
                 url: '/list', // specify the URL to send the request to
-                type: 'POST', // use POST method since you're sending form data
+                type: 'GET', // use POST method since you're sending form data
                 data: {"input": $("#taskTextarea").val()},
-                success: function(response) {
-                    // Redirect to the list page upon successful response
-                    window.location.href = '/home';
-                },
-                error: function(xhr, status, error) {
-                    // Handle errors if any
-                    console.error("Error:", error);
-                }
             });
         }
     });
-    </script>
+</script>
 </html>

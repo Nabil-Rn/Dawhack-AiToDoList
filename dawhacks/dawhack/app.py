@@ -10,15 +10,11 @@ def home():
     return render_template("index.html")
 @app.route("/list", methods=['GET', 'POST'])
 def list():
-    if request.method == 'POST':
-        input_value = request.form.get("input")
-        if input_value and input_value.strip():
-            try:
-                list_content = loadNewList(input_value)
-                return render_template("list.html", list_content=list_content)
-            except Exception as e:
-                error_message = f"Error: {str(e)}"
-                return render_template("error.html", error_message=error_message)
+    input_value = request.args.get("input")
+    print(input_value)
+    list_content = loadNewList(input_value)
+    content = render_template("list.html") + list_content + "</body></html>"
+    return content
 
 def loadNewList(list_text):
     response = client.chat.completions.create(
